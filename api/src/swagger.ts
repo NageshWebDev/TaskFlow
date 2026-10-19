@@ -138,7 +138,7 @@ const options: swaggerJsdoc.Options = {
           ],
           responses: { 200: { description: 'OK' }, 404: { description: 'Not found' } },
         },
-        patch: {
+        put: {
           tags: ['Projects'],
           security: [{ bearerAuth: [] }],
           summary: 'Update project',
@@ -191,7 +191,7 @@ const options: swaggerJsdoc.Options = {
           ],
           responses: { 200: { description: 'OK' } },
         },
-        patch: {
+        put: {
           tags: ['Tasks'],
           security: [{ bearerAuth: [] }],
           summary: 'Update task (including status change)',

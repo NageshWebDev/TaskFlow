@@ -1,0 +1,336 @@
+/**
+ * Design tokens — single source of truth.
+ * Hex/rgb values may live only in this file. Everywhere else must consume
+ * these custom properties (or Tailwind utilities mapped from them).
+ */
+
+:root {
+  /* Brand */
+  --brand: #2563eb;
+  --brand-hover: #1d4ed8;
+  --on-brand: #ffffff;
+  --brand-soft: #dbeafe;
+  --accent: var(--brand);
+  --accent-soft: var(--brand-soft);
+  --neutral-soft: #f3f4f6;
+  --brand-ring: #bfdbfe;
+  --brand-muted: rgb(37 99 235 / 0.2);
+
+  /* Surfaces */
+  --bg: #e6edf5;
+  --bg-subtle: #dce5ef;
+  --bg-auth: #eef2ff;
+  --bg-auth-spot: #e0e7ff;
+  --bg-auth-bubble-a: #c7d2fe;
+  --bg-auth-bubble-b: #ddd6fe;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --text-primary: var(--ink);
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --muted: #64748b;
+  --muted-soft: #94a3b8;
+  --placeholder: #6b7280;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --border-hover: #94a3b8;
+
+  /* Chrome */
+  --sidebar: #0f172a;
+  --sidebar-soft: #1e293b;
+  --sidebar-active: #1e3a5f;
+  --sidebar-elevated: #1b283c;
+  --sidebar-line: rgb(255 255 255 / 0.1);
+  --sidebar-hover: rgb(255 255 255 / 0.05);
+  --sidebar-text: #e2e8f0;
+  --sidebar-muted: #94a3b8;
+  --switch-track: #475569;
+  --switch-thumb: #ffffff;
+  --switch-width: 2.25rem;
+  --switch-height: 1.25rem;
+  --switch-knob: 1rem;
+  --hero: #111827;
+  --hero-chip: #2d3a4f;
+  --hero-dot-blue: #3b82f6;
+  --hero-dot-violet: #a855f7;
+  --hero-dot-green: #22c55e;
+
+  /* Semantic */
+  --success: #059669;
+  --success-soft: #d1fae5;
+  --warning: #d97706;
+  --warning-soft: #fef3c7;
+  --danger: #dc2626;
+  --danger-strong: #b91c1c;
+  --danger-soft: #fee2e2;
+  --danger-border: #fca5a5;
+  --violet: #7c3aed;
+  --orange: #f97316;
+  --info: var(--brand);
+
+  /* Task status — shared by board, chips, cards, and dashboard donut */
+  --status-todo: #64748b;
+  --status-todo-soft: #f1f5f9;
+  --status-todo-border: #e2e8f0;
+  --status-progress: #1d4ed8;
+  --status-progress-soft: #eff6ff;
+  --status-progress-border: #bfdbfe;
+  --status-done: #047857;
+  --status-done-soft: #ecfdf5;
+  --status-done-border: #a7f3d0;
+  --status-overdue: #b91c1c;
+  --status-overdue-soft: #fef2f2;
+  --status-overdue-border: #fecaca;
+  --status-overdue-edge: #dc2626;
+  --status-overdue-text: var(--status-overdue);
+  --priority-low: #64748b;
+  --priority-low-soft: #f1f5f9;
+  --priority-medium: #ea580c;
+  --priority-medium-soft: #ffedd5;
+  --priority-high: #dc2626;
+  --priority-high-soft: #fee2e2;
+  --lane-bg: #edf0f5;
+
+  /* Typography — html stays at the browser default (typically 16px) so rem
+     respects user settings. Body is 0.875rem (14px); captions 0.75rem (12px). */
+  --font: 'DM Sans', 'Segoe UI', sans-serif;
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.375rem;
+  --text-3xl: 1.75rem;
+  --text-kpi: 2rem;
+  --text-2xs: 0.6875rem;
+  --leading-none: 1.2;
+  --leading-tight: 1.25;
+  --leading-title: 1.35;
+  --leading-body: 1.5;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --tracking-tight: -0.03em;
+
+  /* Spacing (0.25rem scale) */
+  --space-0-5: 0.125rem;
+  --space-1: 0.25rem;
+  --tag-py: 0.1875rem;
+  --tag-px: 0.5625rem;
+  --space-2: 0.5rem;
+  --space-2-5: 0.625rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.125rem;
+  --space-6: 1.25rem;
+  --space-8: 1.75rem;
+  --space-10: 2.25rem;
+  --space-stat: 1.25rem;
+  --stat-min: 13.75rem;
+  --size-stat-icon: 2.625rem;
+  --icon-stat: 1.375rem;
+  --icon-sm: 1rem;
+  --icon-due: 0.875rem;
+  --card-accent: 0.1875rem;
+  --search-indent: calc(var(--space-3) + var(--icon-sm) + var(--space-2-5));
+  --filter-search-min: 16rem;
+  --filter-select-w: 11.25rem;
+  --control-h: 2.75rem;
+  --space-lane: 0.75rem;
+  --space-task: 0.875rem;
+  --lane-bar: 0.25rem;
+  --lane-min: 18rem;
+
+  /* Radii */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-panel: 1.25rem;
+  --radius-stat: 0.75rem;
+  --radius-stat-icon: 0.625rem;
+  --radius-control: 0.5rem;
+  --radius-lane: 0.875rem;
+  --radius-task: 0.625rem;
+  --radius-tag: 0.375rem;
+  --radius-full: 999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgb(15 23 42 / 0.05);
+  --shadow-md: 0 10px 30px rgb(15 23 42 / 0.06);
+  --shadow-lg: 0 24px 60px rgb(15 23 42 / 0.15);
+  --shadow-stat: 0 1px 2px rgb(16 24 40 / 0.05);
+  --shadow-stat-hover: 0 4px 10px rgb(16 24 40 / 0.08);
+  --shadow-task: 0 1px 2px rgb(16 24 40 / 0.05);
+  --shadow-task-hover: 0 4px 10px rgb(16 24 40 / 0.08);
+  --shadow-filter: 0 1px 2px rgb(16 24 40 / 0.05);
+  --shadow-lane: 0 1px 2px rgb(16 24 40 / 0.04), 0 2px 8px rgb(15 23 42 / 0.05);
+  --ring-filter: 0 0 0 2px var(--brand-ring);
+
+  /* Layers / motion */
+  --z-dropdown: 50;
+  --z-modal: 50;
+  --duration: 200ms;
+  --duration-stat: 150ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --overlay: rgb(15 23 42 / 0.4);
+
+  /* Breakpoints (documentation + CSS queries) */
+  --bp-md: 48rem;
+  --bp-lg: 64rem;
+  --bp-xl: 80rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --brand-soft: #1e3a8a;
+  --bg: #0b1220;
+  --bg-subtle: #162033;
+  --bg-auth: #0b1220;
+  --bg-auth-spot: #1e293b;
+  --bg-auth-bubble-a: #1e3a8a;
+  --bg-auth-bubble-b: #4c1d95;
+  --surface: #162033;
+  --ink: #f1f5f9;
+  --text-primary: var(--ink);
+  --text-secondary: #9ca3af;
+  --text-muted: #9ca3af;
+  --muted: #94a3b8;
+  --muted-soft: #64748b;
+  --placeholder: #9ca3af;
+  --line: #2a3a52;
+  --line-strong: #3d5270;
+  --border-hover: #64748b;
+  --sidebar: #070d18;
+  --sidebar-soft: #0f172a;
+  --sidebar-active: #1e3a5f;
+  --sidebar-elevated: #152033;
+  --sidebar-line: rgb(255 255 255 / 0.1);
+  --sidebar-hover: rgb(255 255 255 / 0.05);
+  --success-soft: #064e3b;
+  --warning-soft: #78350f;
+  --danger-soft: #7f1d1d;
+  --danger-strong: #fca5a5;
+  --danger-border: #7f1d1d;
+  --neutral-soft: #1e293b;
+  --accent-soft: var(--brand-soft);
+  --overlay: rgb(0 0 0 / 0.6);
+  --status-todo: #94a3b8;
+  --status-todo-soft: #1e293b;
+  --status-todo-border: #334155;
+  --status-progress: #93c5fd;
+  --status-progress-soft: #1e3a8a;
+  --status-progress-border: #1d4ed8;
+  --status-done: #6ee7b7;
+  --status-done-soft: #064e3b;
+  --status-done-border: #047857;
+  --status-overdue: #fca5a5;
+  --status-overdue-soft: #7f1d1d;
+  --status-overdue-border: #f87171;
+  --status-overdue-edge: #f87171;
+  --status-overdue-text: var(--status-overdue);
+  --priority-low: #94a3b8;
+  --priority-low-soft: #1e293b;
+  --priority-medium: #fb923c;
+  --priority-medium-soft: #7c2d12;
+  --priority-high: #f87171;
+  --priority-high-soft: #7f1d1d;
+  --lane-bg: #152033;
+  --shadow-lane: 0 1px 2px rgb(0 0 0 / 0.16), 0 2px 8px rgb(0 0 0 / 0.18);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --color-surface: var(--surface);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--brand);
+  --color-primary-foreground: var(--on-brand);
+  --color-primary-hover: var(--brand-hover);
+  --color-secondary: var(--bg-subtle);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--bg-subtle);
+  --color-muted-foreground: var(--muted);
+  --color-accent: var(--bg-subtle);
+  --color-accent-foreground: var(--ink);
+  --color-destructive: var(--danger);
+  --color-border: var(--line);
+  --color-border-strong: var(--line-strong);
+  --color-border-hover: var(--border-hover);
+  --color-placeholder: var(--placeholder);
+  --color-input: var(--line);
+  --color-ring: var(--brand);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-text);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-elevated: var(--sidebar-elevated);
+  --color-sidebar-line: var(--sidebar-line);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-switch-track: var(--switch-track);
+  --color-switch-thumb: var(--switch-thumb);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-violet: var(--violet);
+  --color-orange: var(--orange);
+  --color-hero: var(--hero);
+  --color-auth: var(--bg-auth);
+  --color-line-strong: var(--line-strong);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-strong: var(--danger-strong);
+  --color-danger-border: var(--danger-border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-status-overdue-text: var(--status-overdue-text);
+  --color-accent-soft: var(--accent-soft);
+  --color-stat-accent: var(--accent);
+  --color-neutral-soft: var(--neutral-soft);
+  --color-muted-soft: var(--muted-soft);
+  --color-overlay: var(--overlay);
+  --color-status-todo: var(--status-todo);
+  --color-status-todo-soft: var(--status-todo-soft);
+  --color-status-todo-border: var(--status-todo-border);
+  --color-status-progress: var(--status-progress);
+  --color-status-progress-soft: var(--status-progress-soft);
+  --color-status-progress-border: var(--status-progress-border);
+  --color-status-done: var(--status-done);
+  --color-status-done-soft: var(--status-done-soft);
+  --color-status-done-border: var(--status-done-border);
+  --color-status-overdue: var(--status-overdue);
+  --color-status-overdue-soft: var(--status-overdue-soft);
+  --color-status-overdue-border: var(--status-overdue-border);
+  --color-status-overdue-edge: var(--status-overdue-edge);
+  --color-priority-low: var(--priority-low);
+  --color-priority-low-soft: var(--priority-low-soft);
+  --color-priority-medium: var(--priority-medium);
+  --color-priority-medium-soft: var(--priority-medium-soft);
+  --color-priority-high: var(--priority-high);
+  --color-priority-high-soft: var(--priority-high-soft);
+  --color-lane-bg: var(--lane-bg);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.875rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --font-sans: var(--font);
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 0.8125rem;
+  --text-sm--line-height: 1.5;
+  --text-base: 0.875rem;
+  --text-base--line-height: 1.5;
+  --text-lg: 1rem;
+  --text-lg--line-height: 1.3;
+  --text-xl: 1.125rem;
+  --text-xl--line-height: 1.25;
+  --text-2xl: 1.375rem;
+  --text-2xl--line-height: 1.2;
+  --text-3xl: 1.75rem;
+  --text-3xl--line-height: 1.2;
+}

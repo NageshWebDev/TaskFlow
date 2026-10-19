@@ -38,7 +38,7 @@ describe('Ownership enforcement', () => {
     expect(getProject.status).toBe(404);
 
     const updateProject = await request(app)
-      .patch(`/api/projects/${projectId}`)
+      .put(`/api/projects/${projectId}`)
       .set('Authorization', `Bearer ${tokenB}`)
       .send({ name: 'Hijacked' });
     expect(updateProject.status).toBe(404);
@@ -49,7 +49,7 @@ describe('Ownership enforcement', () => {
     expect(getTask.status).toBe(404);
 
     const updateTask = await request(app)
-      .patch(`/api/projects/${projectId}/tasks/${taskId}`)
+      .put(`/api/projects/${projectId}/tasks/${taskId}`)
       .set('Authorization', `Bearer ${tokenB}`)
       .send({ status: 'Done' });
     expect(updateTask.status).toBe(404);

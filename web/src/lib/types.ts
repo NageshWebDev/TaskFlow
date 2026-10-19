@@ -18,6 +18,7 @@ export interface Project {
 export interface Task {
   id: string;
   projectId: string;
+  projectName?: string;
   title: string;
   description: string;
   status: TaskStatus;
@@ -30,6 +31,8 @@ export interface DashboardStats {
   totalProjects: number;
   totalTasks: number;
   completedTasks: number;
+  inProgressTasks?: number;
+  todoTasks?: number;
   overdueTasks: number;
 }
 

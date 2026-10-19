@@ -12,5 +12,7 @@ export default function HomePage() {
     router.replace(token ? '/dashboard' : '/login');
   }, [router, token]);
 
-  return <p className="muted center-msg">Redirecting…</p>;
+  return (
+    <p className="p-8 text-center text-base text-muted-foreground">Redirecting…</p>
+  );
 }

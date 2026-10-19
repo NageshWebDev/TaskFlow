@@ -19,7 +19,7 @@ router.get(
   validate(objectIdParamSchema, 'params'),
   projectController.get
 );
-router.patch(
+router.put(
   '/:id',
   validate(objectIdParamSchema, 'params'),
   validate(updateProjectSchema),

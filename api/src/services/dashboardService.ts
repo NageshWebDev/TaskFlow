@@ -24,6 +24,12 @@ export async function getDashboardStats(userId: string) {
           completedTasks: {
             $sum: { $cond: [{ $eq: ['$status', 'Done'] }, 1, 0] },
           },
+          inProgressTasks: {
+            $sum: { $cond: [{ $eq: ['$status', 'In Progress'] }, 1, 0] },
+          },
+          todoTasks: {
+            $sum: { $cond: [{ $eq: ['$status', 'To Do'] }, 1, 0] },
+          },
           overdueTasks: {
             $sum: {
               $cond: [
@@ -47,6 +53,8 @@ export async function getDashboardStats(userId: string) {
     totalProjects: projectAgg[0]?.totalProjects ?? 0,
     totalTasks: taskAgg[0]?.totalTasks ?? 0,
     completedTasks: taskAgg[0]?.completedTasks ?? 0,
+    inProgressTasks: taskAgg[0]?.inProgressTasks ?? 0,
+    todoTasks: taskAgg[0]?.todoTasks ?? 0,
     overdueTasks: taskAgg[0]?.overdueTasks ?? 0,
   };
 }

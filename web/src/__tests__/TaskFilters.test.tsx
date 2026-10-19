@@ -41,12 +41,14 @@ describe('TaskFilters and empty state', () => {
     render(<FiltersHarness onChangeSpy={spy} />);
 
     await user.type(screen.getByLabelText(/search tasks by title/i), 'api');
-    await user.selectOptions(screen.getByLabelText(/filter by status/i), 'To Do');
-    await user.selectOptions(screen.getByLabelText(/filter by priority/i), 'High');
+    await user.click(screen.getByLabelText(/filter by status/i));
+    await user.click(await screen.findByRole('option', { name: 'To Do' }));
+    await user.click(screen.getByLabelText(/filter by priority/i));
+    await user.click(await screen.findByRole('option', { name: 'High' }));
 
     expect(spy).toHaveBeenCalled();
-    expect(screen.getByLabelText(/filter by status/i)).toHaveValue('To Do');
-    expect(screen.getByLabelText(/filter by priority/i)).toHaveValue('High');
+    expect(screen.getByLabelText(/filter by status/i)).toHaveTextContent('To Do');
+    expect(screen.getByLabelText(/filter by priority/i)).toHaveTextContent('High');
     expect(screen.getByLabelText(/search tasks by title/i)).toHaveValue('api');
   });
 
@@ -56,7 +58,8 @@ describe('TaskFilters and empty state', () => {
 
     await user.clear(screen.getByLabelText(/search tasks by title/i));
     await user.type(screen.getByLabelText(/search tasks by title/i), 'none');
-    await user.selectOptions(screen.getByLabelText(/filter by status/i), 'Done');
+    await user.click(screen.getByLabelText(/filter by status/i));
+    await user.click(await screen.findByRole('option', { name: 'Done' }));
 
     expect(screen.getByRole('status')).toHaveTextContent('No matching tasks');
     expect(screen.getByRole('status')).toHaveTextContent(

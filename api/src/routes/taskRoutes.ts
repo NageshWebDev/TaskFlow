@@ -27,7 +27,7 @@ router.post(
   taskController.create
 );
 router.get('/:taskId', validate(taskIdParamSchema, 'params'), taskController.get);
-router.patch(
+router.put(
   '/:taskId',
   validate(taskIdParamSchema, 'params'),
   validate(updateTaskSchema),

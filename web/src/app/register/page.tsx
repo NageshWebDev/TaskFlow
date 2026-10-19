@@ -1,19 +1,21 @@
 'use client';
 
-import Link from 'next/link';
+import { AuthFooterLink, AuthShell } from '@/components/AuthShell';
 import { LoginForm } from '@/components/LoginForm';
 
 export default function RegisterPage() {
   return (
-    <div className="auth-shell">
-      <div className="auth-card">
-        <h1>Create account</h1>
-        <p className="muted">Start tracking projects with TaskFlow.</p>
-        <LoginForm mode="register" />
-        <p className="auth-switch">
-          Already registered? <Link href="/login">Sign in</Link>
-        </p>
-      </div>
-    </div>
+    <AuthShell
+      title="Create your account"
+      subtitle="Start tracking projects and tasks with TaskFlow."
+      footer={
+        <>
+          Already have an account?{' '}
+          <AuthFooterLink href="/login">Sign in</AuthFooterLink>
+        </>
+      }
+    >
+      <LoginForm mode="register" />
+    </AuthShell>
   );
 }

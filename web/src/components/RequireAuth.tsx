@@ -17,7 +17,11 @@ export function RequireAuth({ children }: { children: React.ReactNode }) {
   }, [router, token]);
 
   if (!ready || !token) {
-    return <p className="muted center-msg">Loading…</p>;
+    return (
+      <p className="px-4 py-12 text-center text-base text-muted-foreground">
+        Loading…
+      </p>
+    );
   }
 
   return <>{children}</>;

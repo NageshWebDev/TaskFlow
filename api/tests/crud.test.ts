@@ -43,7 +43,7 @@ describe('Full CRUD flow', () => {
     const task2Id = task2.body.data.id as string;
 
     const done = await request(app)
-      .patch(`/api/projects/${projectId}/tasks/${task2Id}`)
+      .put(`/api/projects/${projectId}/tasks/${task2Id}`)
       .set(authHeader)
       .send({ status: 'Done' });
     expect(done.status).toBe(200);

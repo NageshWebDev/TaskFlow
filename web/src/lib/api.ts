@@ -55,6 +55,24 @@ export const api = {
 
   listProjects: (token: string) => request<Project[]>('/projects', {}, token),
 
+  listAllTasks: (
+    token: string,
+    params?: {
+      status?: string;
+      priority?: string;
+      search?: string;
+      projectId?: string;
+    }
+  ) => {
+    const qs = new URLSearchParams();
+    if (params?.status) qs.set('status', params.status);
+    if (params?.priority) qs.set('priority', params.priority);
+    if (params?.search) qs.set('search', params.search);
+    if (params?.projectId) qs.set('projectId', params.projectId);
+    const query = qs.toString() ? `?${qs}` : '';
+    return request<Task[]>(`/tasks${query}`, {}, token);
+  },
+
   getProject: (token: string, id: string) =>
     request<Project>(`/projects/${id}`, {}, token),
 
@@ -75,7 +93,7 @@ export const api = {
   ) =>
     request<Project>(
       `/projects/${id}`,
-      { method: 'PATCH', body: JSON.stringify(data) },
+      { method: 'PUT', body: JSON.stringify(data) },
       token
     ),
 
@@ -114,7 +132,7 @@ export const api = {
   ) =>
     request<Task>(
       `/projects/${projectId}/tasks/${taskId}`,
-      { method: 'PATCH', body: JSON.stringify(data) },
+      { method: 'PUT', body: JSON.stringify(data) },
       token
     ),
 

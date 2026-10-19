@@ -12,7 +12,7 @@ function serialize(task: ITask) {
     description: task.description,
     status: task.status,
     priority: task.priority,
-    dueDate: task.dueDate,
+    dueDate: task.dueDate instanceof Date ? task.dueDate.toISOString() : task.dueDate,
     createdAt: task.createdAt,
     updatedAt: task.updatedAt,
   };
@@ -34,6 +34,46 @@ export async function listTasks(
 
   const tasks = await Task.find(query).sort({ createdAt: -1 });
   return tasks.map(serialize);
+}
+
+export async function listAllTasks(
+  userId: string,
+  filters: {
+    status?: TaskStatus;
+    priority?: TaskPriority;
+    search?: string;
+    projectId?: string;
+  }
+) {
+  const query: FilterQuery<ITask> = { userId };
+  if (filters.projectId) query.projectId = filters.projectId;
+  if (filters.status) query.status = filters.status;
+  if (filters.priority) query.priority = filters.priority;
+  if (filters.search?.trim()) {
+    query.title = { $regex: filters.search.trim(), $options: 'i' };
+  }
+
+  const tasks = await Task.find(query)
+    .populate('projectId', 'name')
+    .sort({ createdAt: -1 });
+
+  return tasks.map((task) => {
+    const project = task.projectId as unknown as {
+      _id: { toString(): string };
+      name?: string;
+    } | null;
+    const projectId =
+      project && typeof project === 'object' && '_id' in project
+        ? project._id.toString()
+        : task.projectId.toString();
+    const projectName =
+      project && typeof project === 'object' && 'name' in project
+        ? project.name || 'Project'
+        : 'Project';
+
+    const row = serialize(task);
+    return { ...row, projectId, projectName };
+  });
 }
 
 export async function getTask(userId: string, projectId: string, taskId: string) {
