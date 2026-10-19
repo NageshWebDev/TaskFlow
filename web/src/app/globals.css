@@ -87,7 +87,6 @@ textarea {
   position: relative;
   z-index: 1;
   display: grid;
-  width: min(57.5rem, 100%);
   overflow: hidden;
   border-radius: var(--radius-panel);
   background: var(--surface);

@@ -1,3 +1,19 @@
+## Prerequisites
+
+- Node.js 22+
+- MongoDB 7 running locally, **or** Docker
+---
+
+## Run with Docker (full stack)
+
+```bash
+docker compose up --build
+```
+
+This starts MongoDB, the API on port `4000` and the web app on port `3000`. The Compose file uses a placeholder `JWT_SECRET`; change it before deploying anywhere real.
+
+---
+
 # TaskFlow
 
 A mini project-management app. Users register, create projects, add tasks with status, priority and due dates, and track progress on a dashboard.
@@ -47,13 +63,6 @@ See [ARCHITECTURE.md](./ARCHITECTURE.md) for the schema, auth approach and key t
 ├── .github/workflows/ci.yml
 └── ARCHITECTURE.md
 ```
-
----
-
-## Prerequisites
-
-- Node.js 22+
-- MongoDB 7 running locally, **or** Docker
 
 ---
 
@@ -119,16 +128,6 @@ Open the web app, register an account, and you're in.
 cd api && npm run build && npm start
 cd web && npm run build && npm start
 ```
-
----
-
-## Run with Docker (full stack)
-
-```bash
-docker compose up --build
-```
-
-This starts MongoDB, the API on port `4000` and the web app on port `3000`. The Compose file uses a placeholder `JWT_SECRET`; change it before deploying anywhere real.
 
 ---
 
